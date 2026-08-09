@@ -20,7 +20,7 @@ from .services import (
 async def main():
 
     db = store()
-    await _build_index(store)
+    await _build_index(db)
 
     service_ns = Namespaces()
 
