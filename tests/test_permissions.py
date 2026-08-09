@@ -17,7 +17,7 @@ from y5n.packs.ident.services import (
     PermissionResolver,
 )
 from y5n.runtime.api.naming import Key
-from y5n.runtime.engine.capabilities.permission import (
+from y5n.runtime.engine.services.permissions import (
     PermissionParser,
     PermissionSet,
 )
