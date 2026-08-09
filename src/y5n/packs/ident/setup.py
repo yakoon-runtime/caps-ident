@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from y5n.runtime.api.naming import Key
 from y5n.sdk import ports
-from y5n.sdk.store import StoreClient
+from y5n.sdk import store as store_factory
 
 from .bootstrap import bootstrap
 from .models import Account, AccountData
@@ -20,7 +20,7 @@ from .services import (
 
 async def main():
 
-    store = StoreClient()
+    store = store_factory()
     await _build_index(store)
 
     service_ns = Namespaces()
