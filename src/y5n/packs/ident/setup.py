@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from y5n.runtime.api.naming import Key
-from y5n.runtime.store.event.wire import build_store
 from y5n.sdk import ports
+from y5n.sdk.store_client import StoreClient
 
 from .bootstrap import bootstrap
 from .models import Account, AccountData
@@ -16,47 +16,45 @@ from .services import (
     PermissionGrantService,
     PermissionResolver,
 )
-from .settings import Settings
 
 
 async def main():
 
-    settings = Settings()
-    store = build_store(settings.storage)
+    store = StoreClient()
     await _build_index(store)
 
     service_ns = Namespaces()
 
     accounts = AccountService(
-        on_append=store.objects.append,
-        on_replace=store.objects.replace,
-        on_get_by_key=store.objects.get,
-        on_get_many=store.objects.get_many,
-        on_scan=store.objects.scan,
+        on_append=store.append,
+        on_replace=store.replace,
+        on_get_by_key=store.get,
+        on_get_many=store.get_many,
+        on_scan=store.scan,
     )
 
     groups = GroupService(
-        on_get=store.objects.get,
-        on_append=store.objects.append,
-        on_replace=store.objects.replace,
-        on_get_many=store.objects.get_many,
-        on_scan=store.objects.scan,
+        on_get=store.get,
+        on_append=store.append,
+        on_replace=store.replace,
+        on_get_many=store.get_many,
+        on_scan=store.scan,
     )
 
     join_svc = JoinService(
-        on_get=store.objects.get,
-        on_append=store.objects.append,
-        on_replace=store.objects.replace,
-        on_get_many=store.objects.get_many,
-        on_scan=store.objects.scan,
+        on_get=store.get,
+        on_append=store.append,
+        on_replace=store.replace,
+        on_get_many=store.get_many,
+        on_scan=store.scan,
     )
 
     permgrant = PermissionGrantService(
-        on_get=store.objects.get,
-        on_append=store.objects.append,
-        on_replace=store.objects.replace,
-        on_get_many=store.objects.get_many,
-        on_scan=store.objects.scan,
+        on_get=store.get,
+        on_append=store.append,
+        on_replace=store.replace,
+        on_get_many=store.get_many,
+        on_scan=store.scan,
     )
 
     resolver = PermissionResolver(
@@ -108,19 +106,19 @@ async def main():
 
 async def _build_index(store):
     namespaces = Namespaces()
-    await store.objects.ensure_indexes(
+    await store.ensure_indexes(
         namespace=namespaces.account_namespace(),
         specs=AccountService.index_specs(),
     )
-    await store.objects.ensure_indexes(
+    await store.ensure_indexes(
         namespace=namespaces.group_namespace(),
         specs=GroupService.index_specs(),
     )
-    await store.objects.ensure_indexes(
+    await store.ensure_indexes(
         namespace=namespaces.join_namespace(),
         specs=JoinService.index_specs(),
     )
-    await store.objects.ensure_indexes(
+    await store.ensure_indexes(
         namespace=namespaces.permgrant_namespace(),
         specs=PermissionGrantService.index_specs(),
     )
