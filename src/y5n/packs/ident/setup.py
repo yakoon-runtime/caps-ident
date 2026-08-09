@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from y5n.runtime.api.naming import Key
-from y5n.sdk import ports
-from y5n.sdk import store as store_factory
+from y5n.sdk import ports, store
 
 from .bootstrap import bootstrap
 from .models import Account, AccountData
@@ -20,41 +19,41 @@ from .services import (
 
 async def main():
 
-    store = store_factory()
+    db = store()
     await _build_index(store)
 
     service_ns = Namespaces()
 
     accounts = AccountService(
-        on_append=store.append,
-        on_replace=store.replace,
-        on_get_by_key=store.get,
-        on_get_many=store.get_many,
-        on_scan=store.scan,
+        on_append=db.append,
+        on_replace=db.replace,
+        on_get_by_key=db.get,
+        on_get_many=db.get_many,
+        on_scan=db.scan,
     )
 
     groups = GroupService(
-        on_get=store.get,
-        on_append=store.append,
-        on_replace=store.replace,
-        on_get_many=store.get_many,
-        on_scan=store.scan,
+        on_get=db.get,
+        on_append=db.append,
+        on_replace=db.replace,
+        on_get_many=db.get_many,
+        on_scan=db.scan,
     )
 
     join_svc = JoinService(
-        on_get=store.get,
-        on_append=store.append,
-        on_replace=store.replace,
-        on_get_many=store.get_many,
-        on_scan=store.scan,
+        on_get=db.get,
+        on_append=db.append,
+        on_replace=db.replace,
+        on_get_many=db.get_many,
+        on_scan=db.scan,
     )
 
     permgrant = PermissionGrantService(
-        on_get=store.get,
-        on_append=store.append,
-        on_replace=store.replace,
-        on_get_many=store.get_many,
-        on_scan=store.scan,
+        on_get=db.get,
+        on_append=db.append,
+        on_replace=db.replace,
+        on_get_many=db.get_many,
+        on_scan=db.scan,
     )
 
     resolver = PermissionResolver(
@@ -104,21 +103,21 @@ async def main():
     ports.promote("ident.auth", auth)
 
 
-async def _build_index(store):
+async def _build_index(db):
     namespaces = Namespaces()
-    await store.ensure_indexes(
+    await db.ensure_indexes(
         namespace=namespaces.account_namespace(),
         specs=AccountService.index_specs(),
     )
-    await store.ensure_indexes(
+    await db.ensure_indexes(
         namespace=namespaces.group_namespace(),
         specs=GroupService.index_specs(),
     )
-    await store.ensure_indexes(
+    await db.ensure_indexes(
         namespace=namespaces.join_namespace(),
         specs=JoinService.index_specs(),
     )
-    await store.ensure_indexes(
+    await db.ensure_indexes(
         namespace=namespaces.permgrant_namespace(),
         specs=PermissionGrantService.index_specs(),
     )
