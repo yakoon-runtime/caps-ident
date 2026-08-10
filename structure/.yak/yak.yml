@@ -3,3 +3,6 @@ title: dsl
 resolvable: false
 navigable: true
 contextual: false
+
+stores:
+  - ident
