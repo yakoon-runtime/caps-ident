@@ -1,9 +1,9 @@
-from y5n.sdk import io, ports
+from y5n.sdk import io, ports, session
 
 
 async def main():
-    current = await ports.get("session").current()
-    user = current.get("user_name") or ""
+    current = await session.current()
+    user = current.user or ""
 
     auth = ports.get("ident.auth")
     await auth.logout()

@@ -4,7 +4,7 @@ from typing import Protocol
 
 from y5n.runtime.api.naming import Key, Namespace
 from y5n.runtime.api.ports.protocols import OnAfterVerify
-from y5n.sdk import ports
+from y5n.sdk import session
 
 from ..models import Account
 
@@ -47,8 +47,7 @@ class AuthenticationService:
 
         after = await self.on_after_verify(account=account)
 
-        ses = ports.get("session")
-        await ses.update(
+        await session.update(
             patch={
                 "user_key": str(account.key),
                 "user_name": account.username,
@@ -57,7 +56,7 @@ class AuthenticationService:
         )
 
         specs = await self.on_resolve_permissions(account_key=account.key)
-        await ses.set_permissions(specs=specs)
+        await session.set_permissions(specs=specs)
 
         return {
             "ok": True,
@@ -67,8 +66,7 @@ class AuthenticationService:
         }
 
     async def logout(self) -> None:
-        ses = ports.get("session")
-        await ses.logout()
+        await session.logout()
 
     def _to_dict(self, account: Account) -> dict:
         return {
