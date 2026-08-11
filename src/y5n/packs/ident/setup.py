@@ -19,7 +19,7 @@ from .services import (
 
 async def main():
 
-    db = store()
+    db = store.get("ident")
     await _build_index(db)
 
     service_ns = Namespaces()

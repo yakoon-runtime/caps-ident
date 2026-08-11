@@ -3,6 +3,10 @@ title: Ident
 resolvable: false
 navigable: true
 contextual: false
+host: /boot/python/runtime
 
 stores:
   - ident
+
+entry:
+  setup: pack:y5n.packs.ident.setup:main
