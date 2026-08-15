@@ -1,4 +1,0 @@
-name = "y5n-packs-ident"
-version = "0.8.0"
-description = "Identity management: users, groups, grants, joins"
-mount = "/usr/sbin/ident"
