@@ -1,3 +1,7 @@
 components:
   y5n-packs-ident:
     location: y5n-packs-ident
+
+bundles:
+  ident:
+    - y5n-packs-ident
