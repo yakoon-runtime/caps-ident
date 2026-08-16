@@ -4,7 +4,7 @@ navigable: false
 contextual: false
 host: /boot/python/runtime
 entry:
-  run: pack:y5n.packs.ident.apps.groups.edit:main
+  run: pack:y5n.caps.ident.apps.groups.edit:main
 invocation:
   params:
   - key: name
@@ -12,7 +12,7 @@ invocation:
     required: true
   - key: enabled
 resources:
-  ref: resource:y5n.packs.ident.resources.loader:content
+  ref: resource:y5n.caps.ident.resources.loader:content
   document:
     default:
       path: group/edit/default.ydf

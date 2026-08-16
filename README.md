@@ -1,4 +1,4 @@
-# y5n-packs-ident
+# y5n-caps-ident
 
 *Identity, authorization and session security for Yakoon.*
 

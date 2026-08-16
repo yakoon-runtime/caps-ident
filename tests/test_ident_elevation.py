@@ -10,7 +10,7 @@ from __future__ import annotations
 from unittest.mock import AsyncMock
 
 import pytest
-from y5n.packs.ident.services.authentication import AuthenticationService
+from y5n.caps.ident.services.authentication import AuthenticationService
 from y5n.runtime.api.naming import Key, Namespace
 
 
@@ -23,7 +23,7 @@ def _sdk_endpoint(monkeypatch):
 
 
 def _account(username: str):
-    from y5n.packs.ident.models import Account, AccountData
+    from y5n.caps.ident.models import Account, AccountData
 
     return Account(
         key=Key.from_parts("test", "accounts", "global", f"a-{username}"),

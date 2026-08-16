@@ -7,8 +7,8 @@ Covers the full pipeline without process boundaries:
 from __future__ import annotations
 
 import pytest
-from y5n.packs.ident.bootstrap import bootstrap
-from y5n.packs.ident.services import (
+from y5n.caps.ident.bootstrap import bootstrap
+from y5n.caps.ident.services import (
     AccountService,
     GroupService,
     JoinService,

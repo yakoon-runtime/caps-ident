@@ -59,7 +59,7 @@ def _services(ports, monkeypatch):
 
 
 def _run(username: str, me: str | None):
-    from y5n.packs.ident.apps.accounts import delete as delete_cmd
+    from y5n.caps.ident.apps.accounts import delete as delete_cmd
 
     class _FakeNode:
         key = "delete"
