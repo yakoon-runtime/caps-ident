@@ -4,7 +4,7 @@ navigable: false
 contextual: false
 host: /boot/python/runtime
 entry:
-  run: pack:y5n.caps.ident.apps.accounts.add:main
+  run: cap:y5n.caps.ident.apps.accounts.add:main
 invocation:
   params:
   - key: username

@@ -5,7 +5,7 @@ contextual: false
 privileged: true
 host: /boot/python/runtime
 entry:
-  run: pack:y5n.caps.ident.apps.accounts.delete:main
+  run: cap:y5n.caps.ident.apps.accounts.delete:main
 invocation:
   params:
   - key: username

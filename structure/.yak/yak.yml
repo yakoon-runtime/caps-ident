@@ -9,4 +9,4 @@ stores:
   - ident
 
 entry:
-  setup: pack:y5n.caps.ident.setup:main
+  setup: cap:y5n.caps.ident.setup:main

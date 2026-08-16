@@ -4,7 +4,7 @@ navigable: false
 contextual: false
 host: /boot/python/runtime
 entry:
-  run: pack:y5n.caps.ident.apps.joins.accounts:main
+  run: cap:y5n.caps.ident.apps.joins.accounts:main
 invocation:
   params:
   - key: group

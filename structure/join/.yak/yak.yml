@@ -4,7 +4,7 @@ navigable: true
 contextual: false
 host: /boot/python/runtime
 entry:
-  run: pack:y5n.caps.ident.apps.joins.add:main
+  run: cap:y5n.caps.ident.apps.joins.add:main
 resources:
   ref: resource:y5n.caps.ident.resources.loader:content
   document:
