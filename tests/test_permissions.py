@@ -120,7 +120,7 @@ async def test_root_account_gets_admin_group_permissions(services):
     assert permset.check("/", "rwx")
     assert permset.check("/usr/bin/ls", "x")
     assert permset.check("/usr/sbin/ident/accounts", "rwx")
-    assert permset.check("/opt/crm", "rwx")
+    assert permset.check("/opt/contacts", "rwx")
     assert permset.check("/dsl", "rwx")
     assert permset.check("/boot", "r")
 
