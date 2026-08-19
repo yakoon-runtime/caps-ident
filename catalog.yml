@@ -1,5 +1,6 @@
 components:
-  - location: .
+  y5n-caps-ident:
+    location: .
 bundles:
   ident:
-  - y5n-caps-ident
+    - y5n-caps-ident
