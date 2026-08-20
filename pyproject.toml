@@ -10,6 +10,12 @@ license = { text = "Apache-2.0" }
 authors = [{ name = "Stefan Bergmann" }]
 dependencies = ["y5n-runtime-api", "y5n-sdk-python", "y5n-runtime-store"]
 
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-asyncio",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
@@ -20,3 +26,6 @@ namespaces = true
 [tool.setuptools.package-data]
 "y5n.caps.ident" = ["*.ydf", "**/*.ydf"]
 "y5n.caps.ident.resources" = ["*.ydf", "**/*.ydf"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
