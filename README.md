@@ -1,5 +1,10 @@
 # y5n-caps-ident
 
+[![Version](https://img.shields.io/badge/Version-0.8.0-blue.svg)]()
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)]()
+[![Tests](https://github.com/yakoon-runtime/caps-ident/actions/workflows/tests.yml/badge.svg)](https://github.com/yakoon-runtime/caps-ident/actions/workflows/tests.yml)
+
 *Identity, authorization and session security for Yakoon.*
 
 `ident` answers three independent questions:
