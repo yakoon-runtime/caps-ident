@@ -5,6 +5,8 @@
 [![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)]()
 [![Tests](https://github.com/yakoon-runtime/caps-ident/actions/workflows/tests.yml/badge.svg)](https://github.com/yakoon-runtime/caps-ident/actions/workflows/tests.yml)
 
+**Status: Active development**
+
 *Identity, authorization and session security for Yakoon.*
 
 `ident` answers three independent questions:
@@ -226,3 +228,10 @@ Backend services used by the runtime:
 - **PermissionResolver** — resolves an account's effective permissions
   into spec strings the engine parses into a session `PermissionSet`
 - **Verifier** — password policy enforcement
+
+---
+
+## Links
+
+- Developer setup: [yakoon-runtime/developer](https://github.com/yakoon-runtime/developer)
+- Runtime: [yakoon-runtime/runtime](https://github.com/yakoon-runtime/runtime)
